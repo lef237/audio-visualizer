@@ -117,6 +117,7 @@ export default function AudioVisualizer() {
   const [source, setSource] = useState<AudioBufferSourceNode | null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [volume, setVolume] = useState<number>(1);
+  const [fileName, setFileName] = useState<string>("");
 
   useEffect(() => {
     if (audioUrl && audioBuffer) {
@@ -135,6 +136,8 @@ export default function AudioVisualizer() {
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const file = event.target.files?.[0];
       if (!file) return;
+
+      setFileName(file.name);
 
       const reader = new FileReader();
 
@@ -211,27 +214,36 @@ export default function AudioVisualizer() {
         height={CANVAS_HEIGHT}
         className="border border-gray-500 w-full h-auto"
       ></canvas>
-      <input
-        type="file"
-        accept="audio/*"
-        onChange={handleFileUpload}
-        className="p-2 border border-gray-500 rounded cursor-pointer text-white"
-      />
+      <div className="flex items-center w-full space-x-2 text-xs">
+        <label className="flex items-center bg-black text-blue-500 border border-blue-500 rounded shadow-md cursor-pointer hover:bg-gray-800 px-2 py-1">
+          <span>Select Audio File</span>
+          <input
+            type="file"
+            accept="audio/*"
+            onChange={handleFileUpload}
+            className="hidden"
+          />
+        </label>
+        {fileName && <p className="text-blue-300 truncate">{fileName}</p>}
+      </div>
       <button
         onClick={handlePlayStop}
-        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 w-full"
+        className="px-4 py-2 bg-blue-700 text-white rounded hover:bg-blue-800 w-24 text-sm"
       >
         {isPlaying ? "Stop" : "Play"}
       </button>
-      <input
-        type="range"
-        min={MIN_VOLUME}
-        max={MAX_VOLUME}
-        step={VOLUME_STEP}
-        value={volume}
-        onChange={handleVolumeChange}
-        className="w-full accent-blue-500"
-      />
+      <div className="flex items-center w-full text-sm">
+        <span className="text-blue-300 mr-2">Volume</span>
+        <input
+          type="range"
+          min={MIN_VOLUME}
+          max={MAX_VOLUME}
+          step={VOLUME_STEP}
+          value={volume}
+          onChange={handleVolumeChange}
+          className="w-full accent-blue-500"
+        />
+      </div>
     </div>
   );
 }
