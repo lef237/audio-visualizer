@@ -1,4 +1,3 @@
-import "./App.css";
 import AudioVisualizer from "./components/AudioVisualizer";
 
 function App() {
