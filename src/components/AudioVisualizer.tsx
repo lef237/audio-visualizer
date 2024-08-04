@@ -65,11 +65,11 @@ function useAudioVisualizer(
       requestAnimationFrame(draw);
       analyserRef.current.getByteTimeDomainData(dataArrayRef.current);
 
-      canvasCtx.fillStyle = "rgb(200, 200, 200)";
+      canvasCtx.fillStyle = "rgb(0, 0, 0)";
       canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
 
       canvasCtx.lineWidth = 2;
-      canvasCtx.strokeStyle = "rgb(0, 0, 0)";
+      canvasCtx.strokeStyle = "rgb(173, 216, 230)";
       canvasCtx.beginPath();
 
       const bufferLength = analyserRef.current.frequencyBinCount;
