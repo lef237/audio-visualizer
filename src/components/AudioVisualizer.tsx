@@ -204,9 +204,19 @@ export default function AudioVisualizer() {
   );
 
   return (
-    <div>
-      <input type="file" accept="audio/*" onChange={handleFileUpload} />
-      <button onClick={handlePlayStop}>{isPlaying ? "Stop" : "Play"}</button>
+    <div className="flex flex-col items-center space-y-4 p-4">
+      <input
+        type="file"
+        accept="audio/*"
+        onChange={handleFileUpload}
+        className="p-2 border border-gray-300 rounded cursor-pointer"
+      />
+      <button
+        onClick={handlePlayStop}
+        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+      >
+        {isPlaying ? "Stop" : "Play"}
+      </button>
       <input
         type="range"
         min={MIN_VOLUME}
@@ -214,11 +224,13 @@ export default function AudioVisualizer() {
         step={VOLUME_STEP}
         value={volume}
         onChange={handleVolumeChange}
+        className="w-full"
       />
       <canvas
         ref={canvasRef}
         width={CANVAS_WIDTH}
         height={CANVAS_HEIGHT}
+        className="border border-gray-300"
       ></canvas>
     </div>
   );
