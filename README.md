@@ -1,4 +1,21 @@
-# React + TypeScript + Vite
+# Audio Visualizer
+
+This is a audio visualizer that uses the Web Audio API to visualize audio data in real-time.
+
+The blue colored waveform visualizes the audio data. It's very cool, so please give it a try!
+
+## How to run it locally
+
+1. Clone this repository.
+2. Move to the directory of the cloned repository.
+3. Run the following command:
+
+```sh
+npm install
+npm run dev
+```
+
+## React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
@@ -17,12 +34,12 @@ If you are developing a production application, we recommend updating the config
 export default {
   // other rules...
   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
+    ecmaVersion: "latest",
+    sourceType: "module",
+    project: ["./tsconfig.json", "./tsconfig.node.json", "./tsconfig.app.json"],
     tsconfigRootDir: __dirname,
   },
-}
+};
 ```
 
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
