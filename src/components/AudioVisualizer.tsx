@@ -205,11 +205,17 @@ export default function AudioVisualizer() {
 
   return (
     <div className="flex flex-col items-center space-y-4 p-4">
+      <canvas
+        ref={canvasRef}
+        width={CANVAS_WIDTH}
+        height={CANVAS_HEIGHT}
+        className="border border-gray-500"
+      ></canvas>
       <input
         type="file"
         accept="audio/*"
         onChange={handleFileUpload}
-        className="p-2 border border-gray-300 rounded cursor-pointer"
+        className="p-2 border border-gray-500 rounded cursor-pointer text-white"
       />
       <button
         onClick={handlePlayStop}
@@ -224,14 +230,8 @@ export default function AudioVisualizer() {
         step={VOLUME_STEP}
         value={volume}
         onChange={handleVolumeChange}
-        className="w-full"
+        className="w-full accent-blue-500"
       />
-      <canvas
-        ref={canvasRef}
-        width={CANVAS_WIDTH}
-        height={CANVAS_HEIGHT}
-        className="border border-gray-300"
-      ></canvas>
     </div>
   );
 }
