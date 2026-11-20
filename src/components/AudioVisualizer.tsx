@@ -15,7 +15,7 @@ function useAudioContext() {
   const audioContextRef = useRef<AudioContext | null>(null);
   const analyserRef = useRef<AnalyserNode | null>(null);
   const gainNodeRef = useRef<GainNode | null>(null);
-  const dataArrayRef = useRef<Uint8Array | null>(null);
+  const dataArrayRef = useRef<Uint8Array<ArrayBuffer> | null>(null);
 
   const setupAudioContext = useCallback(() => {
     const AudioContextClass: AudioContextType =
@@ -49,7 +49,7 @@ function useAudioContext() {
 function useAudioVisualizer(
   canvasRef: React.RefObject<HTMLCanvasElement>,
   analyserRef: React.RefObject<AnalyserNode>,
-  dataArrayRef: React.RefObject<Uint8Array>
+  dataArrayRef: React.RefObject<Uint8Array<ArrayBuffer>>
 ) {
   const drawVisualizer = useCallback(() => {
     if (!canvasRef.current || !analyserRef.current || !dataArrayRef.current)
